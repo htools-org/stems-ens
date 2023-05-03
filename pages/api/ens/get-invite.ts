@@ -111,7 +111,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         // Get new code (real code only for mainnet)
         let newInviteCode: string | null = null;
-        if (data.chainId !== 1 && 0) {
+        if (data.chainId !== 1) {
           newInviteCode = 'stems-social-fakeinvite';
         } else {
           try {
