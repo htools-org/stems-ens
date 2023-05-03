@@ -15,6 +15,10 @@ const SUBGRAPH_URL_BY_CHAIN_ID: Record<number, string> = {
   5: 'https://api.thegraph.com/subgraphs/name/ensdomains/ensgoerli',
 };
 
+const MAX_INVITES: number | null = process.env.MAX_INVITES
+  ? parseInt(process.env.MAX_INVITES)
+  : null;
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
   switch (method) {
@@ -107,6 +111,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             inviteCode: existingInvite.invite_code,
             fresh: false,
           });
+        }
+
+        // Limit access
+        if (MAX_INVITES) {
+          const totalInvitesIssued = await db
+            .selectFrom('invites')
+            .select(db.fn.countAll<number>().as('invites_count'))
+            .executeTakeFirstOrThrow();
+          if (totalInvitesIssued.invites_count >= MAX_INVITES) {
+            return res.status(400).json({
+              error: 'Not issuing new invites currently. Try again later.',
+            });
+          }
         }
 
         // Get new code (real code only for mainnet)
