@@ -1,8 +1,8 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { generateNonce } from 'siwe';
-import ironOptions from '@/pages/utils/api/iron';
-import db from '@/pages/utils/api/db';
+import ironOptions from '@/utils/api/iron';
+import db from '@/utils/api/db';
 
 if (!db) {
   console.error('could not connect to database.');
