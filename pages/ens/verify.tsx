@@ -252,7 +252,7 @@ function VerifyENS() {
 
       {/* Main Box */}
       <div className='min-w-full p-4 mt-12 bg-white border border-gray-300 rounded-2xl'>
-        <label className='flex items-baseline gap-4 px-4 py-2 rounded-md bg-stems-light-blue'>
+        <label className='flex items-center gap-4 px-4 py-2 rounded-md bg-stems-light-blue'>
           <span className='font-bold'>ENS Domain</span>
           <input
             type='text'

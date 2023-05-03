@@ -90,7 +90,7 @@ export default function VerifyENS() {
   return (
     <>
       <h2 className='mt-12 text-3xl font-medium text-center'>DNS Record</h2>
-      <div className='grid grid-cols-2 mt-8'>
+      <div className='grid mt-8 md:grid-cols-2'>
         <EncodeRecord />
         <DecodeRecord />
       </div>
