@@ -118,6 +118,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           const totalInvitesIssued = await db
             .selectFrom('invites')
             .select(db.fn.countAll<number>().as('invites_count'))
+            .where('chain_id', '=', 1)
             .executeTakeFirstOrThrow();
           if (totalInvitesIssued.invites_count >= MAX_INVITES) {
             return res.status(400).json({
