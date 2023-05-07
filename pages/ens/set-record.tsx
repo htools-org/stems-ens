@@ -67,7 +67,9 @@ function useEnsThing(
 
   let hashedRecordName = null;
   try {
-    hashedRecordName = hashDnsName(fqdnRecordName);
+    if (name) {
+      hashedRecordName = hashDnsName(fqdnRecordName);
+    }
   } catch (error) {
     console.error(error);
   }
@@ -154,7 +156,7 @@ function CurrentValue({ ensThing }: { ensThing: EnsThing }) {
 
 export default function SetRecordENS() {
   const [name, setName] = useState('');
-  const [recordName, setRecordName] = useState('');
+  const [recordName, setRecordName] = useState('_atproto');
   const [recordValue, setRecordValue] = useState('');
 
   const ensThing = useEnsThing(name, recordName, recordTypes.TXT);
@@ -248,7 +250,7 @@ export default function SetRecordENS() {
             type='text'
             value={recordName}
             onChange={(e) => setRecordName(e.currentTarget.value.toLowerCase())}
-            placeholder='_atproto'
+            placeholder='ex: _atproto'
             className='flex-grow w-full p-2 bg-stems-light-blue outline-stems-dark-green'
           />
           <p className='flex-shrink-0 max-w-6'>{name ? `.${name}` : ''}</p>

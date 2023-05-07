@@ -1,5 +1,7 @@
 import InstructionBox from '@/components/instruction-box';
+import Image from 'next/image';
 import Link from 'next/link';
+import Arrow from '@/public/arrow.svg';
 
 export default function Home() {
   return (
@@ -23,7 +25,8 @@ export default function Home() {
           href='/ens/verify'
           className='block w-full p-4 font-semibold text-center text-white bg-stems-dark-green rounded-2xl'
         >
-          ENS 🡒
+          ENS{' '}
+          <Image src={Arrow} className='inline-block h-4 rotate-90' alt='' />
         </Link>
       </div>
 

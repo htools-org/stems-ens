@@ -351,6 +351,12 @@ function VerifyENS() {
                 </span>
               </li>
               <li>Enter invite code</li>
+            </ol>
+
+            <h4 className='mt-4 font-bold'>
+              How do I use my ENS domain as a handle?
+            </h4>
+            <ol className='ml-1 leading-6 list-decimal list-inside'>
               <li>Setting &gt; Change Handle &gt; My own domain</li>
               <li>Enter domain to retrieve TXT record</li>
               <li>Set TXT Record at the link below</li>
